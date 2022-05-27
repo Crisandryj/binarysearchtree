@@ -2,9 +2,11 @@ require_relative 'Node'
 
 class BinaryTree
 
-    def initialize(array = nil, root = nil)
+    attr_accessor :array, :root
+
+    def initialize(array = nil)
         @array = array
-        @root = root
+        @root = build_tree(array)
     end 
 
     # def pretty_print(node = @root, prefix = '', is_left = true)
@@ -30,10 +32,15 @@ class BinaryTree
         end
     end 
 
+    def insert(value)
+
+
+    end 
+
 end 
 
-new = BinaryTree.new()
-array = [1,2,3,4,5,6,7]
 
-p new.build_tree(array)
+array = [1,2,3,4,5,6,7]
+new = BinaryTree.new(array)
+p new
 
