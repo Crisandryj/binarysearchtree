@@ -31,19 +31,19 @@ class BinaryTree
     end
   end
 
-  def insert(value)
+  def insert(value, _node = root)
+    current_node = @root
     if current_node.nil?
-      current_node.data = value
+      current_node.left = Node.new(value)
       return
     end
     # recursively
     # compare value to the root
-    current_node = @root
-    current_node = if current_node < value
+    current_node = if current_node.data < value
                      # if less than root - go to left tree else go to right tree
-                     insert(current_node.left)
+                     current_node.nil? ? current_node.left = Node.new(value) : insert(value, current_node.left)
                    else
-                     insert(current_node.right)
+                     current_node.nil? ? current_node.right = Node.new(value) : insert(value, current_node.right)
                    end
     # if value = root ...return (add nothing)
     # insert when returns nil
