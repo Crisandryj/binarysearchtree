@@ -9,11 +9,11 @@ class BinaryTree
         @root = build_tree(array)
     end 
 
-    def pretty_print(node = @root, prefix = '', is_left = true)
-        pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
-        puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
-        pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
-    end
+    # def pretty_print(node = @root, prefix = '', is_left = true)
+    #     pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
+    #     puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
+    #     pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
+    # end
 
     def build_tree(array)
         sorted_array = array.sort.uniq
@@ -33,8 +33,20 @@ class BinaryTree
     end 
 
     def insert(value)
-
-
+        #recursively
+        #compare value to the root 
+        current_node = @root
+        if current_node < value 
+        #if less than root - go to left tree else go to right tree
+        current_node = current_node.left
+        else
+            current_node = current_node.right
+        end 
+        if current_node = nil 
+            current_node.data = value
+        end 
+        #if value = root ...return (add nothing)
+        #insert when returns nil
     end 
 
 end 
@@ -42,5 +54,5 @@ end
 
 array = [1,2,3,4,5,6,7]
 new = BinaryTree.new(array)
-p new.pretty_print
+
 
