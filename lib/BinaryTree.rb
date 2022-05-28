@@ -47,3 +47,5 @@ array = [1, 2, 3, 4, 5, 6, 7]
 new = BinaryTree.new(array)
 
 p new.insert(5)
+
+new.pretty_print
