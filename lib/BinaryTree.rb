@@ -4,7 +4,7 @@ class BinaryTree
   attr_accessor :array, :root
 
   def initialize(array = nil)
-    @array = array
+    @array = array.sort.uniq
     @root = build_tree(array)
   end
 
@@ -15,36 +15,29 @@ class BinaryTree
   # end
 
   def build_tree(array)
-    sorted_array = array.sort.uniq
-    start = 0
-    last = sorted_array.length - 1
+    last = array.length - 1
 
-    if start > last
-      nil
-    else
-      mid = sorted_array.length / 2
-      root = sorted_array[mid]
-      node = Node.new(root)
-      node.left = build_tree(sorted_array[0...mid - 1])
-      node.right = build_tree(sorted_array[mid + 1...last])
-      root
-    end
+    return nil if array.empty?
+    
+      mid = array.length / 2
+      root_node = Node.new(array[mid])
+      root_node.left = build_tree(array[0...mid - 1])
+      root_node.right = build_tree(array[mid + 1...last])
+      root_node
   end
 
-  def insert(value, _node = root)
-    current_node = @root
-    if current_node.nil?
-      current_node.left = Node.new(value)
-      return
-    end
+
+
+  def insert(value, node = root)
+    return nil if node.data == value
     # recursively
     # compare value to the root
-    current_node = if current_node.data < value
-                     # if less than root - go to left tree else go to right tree
-                     current_node.nil? ? current_node.left = Node.new(value) : insert(value, current_node.left)
-                   else
-                     current_node.nil? ? current_node.right = Node.new(value) : insert(value, current_node.right)
-                   end
+    if node.data < value
+      # if less than root - go to left tree else go to right tree
+      node.left.nil? ? node.left = Node.new(value) : insert(value, node.left)
+    else
+      node.right.nil? ? node.right = Node.new(value) : insert(value, node.right)
+    end
     # if value = root ...return (add nothing)
     # insert when returns nil
   end
@@ -52,3 +45,5 @@ end
 
 array = [1, 2, 3, 4, 5, 6, 7]
 new = BinaryTree.new(array)
+
+p new.insert(5)
