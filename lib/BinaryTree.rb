@@ -54,7 +54,7 @@ class BinaryTree
       delete(value, node.right)
      end 
      if (node.left != nil && node.right != nil) 
-
+        
        
 
     
