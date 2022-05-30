@@ -37,6 +37,16 @@ class BinaryTree
     # if value = root ...return (add nothing)
     # insert when returns nil
   end
+
+  def delete(value, node = root)
+    if node.data < value
+      node.left.nil? node.delete : delete(value, node.left)
+      node.right.nil? node.delete : delete(value, node.right)
+    end 
+  end 
+
+
+
 end
 
 array = [1, 2, 3, 4, 5, 6, 7]
