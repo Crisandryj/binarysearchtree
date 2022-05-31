@@ -39,33 +39,8 @@ class BinaryTree
   end
 
   def delete(value, node = root)
-    if node.data < value
-     (node.left.nil? && node.right.nil?) ? node.delete : delete(value, node.left)
-     (node.left.nil? && node.right.nil?) ? node.delete : delete(value, node.right)
-
-    if  (node.left != nil && node.right == nil) 
-      node == node.left
-      node.delete
-      else
-        delete(value, node.left)
-     (node.left == nil && node.right != nil) 
-     node == node.right
-     node.delete
-     else
-      delete(value, node.right)
-     end 
-
-     if (node.left != nil && node.right != nil) 
-        if node.right.left.nil?
-          node.data = node.left
-          node.delete
-        else
-          delete(value, node.right)
-        end
-      end 
+   
     
-
-    end 
   end 
 
 
@@ -77,4 +52,3 @@ new = BinaryTree.new(array)
 
 p new.insert(5)
 
-new.pretty_print
