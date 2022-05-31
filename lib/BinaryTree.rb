@@ -40,7 +40,9 @@ class BinaryTree
 
   def delete(value, node = root)
    
-    
+    #delete leaf in the tree - previous node no longer points to it
+    #one child node - replace it with its child (previous node points to the child)
+    #node with 2 childs - next biggest - find the left most node (becomes new key) (recursively remove)
   end 
 
 
