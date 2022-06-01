@@ -8,13 +8,14 @@ class BinaryTree
     @root = build_tree(array)
   end
 
-  def build_tree(array, root = nil)
-    return nil if array
-    mid = array.length/2
-    root = array[mid]
-    left = build_tree(array[0...mid -1])
-    right = build_tree
+  def build_tree(array)
+    nil if array.empty? 
 
+    mid = array.length/2
+    root_node = Node.new(array[mid])
+    root_node.left = build_tree(array[0...mid -1])
+    root_node.right = build_tree(array[mid...array.length -1])
+    root_node
   end
 
   def insert; end
