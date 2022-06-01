@@ -17,10 +17,12 @@ class BinaryTree
   def build_tree(array)
     return nil if array.empty? 
 
-    mid = array.length/2
+    mid = (array.length - 1)/2
     root_node = Node.new(array[mid])
-    root_node.left = build_tree(array[0...mid -1])
-    root_node.right = build_tree(array[mid...(array.length)-1])
+
+    root_node.left = build_tree(array[0...mid])
+    root_node.right = build_tree(array[(mid + 1)..-1])
+
     root_node
   end
 
