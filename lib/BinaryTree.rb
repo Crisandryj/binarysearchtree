@@ -26,10 +26,11 @@ class BinaryTree
     root_node
   end
 
-  def insert
-    
+  def insert(value, root = nil)
+    root = value if root.nil?
 
-  
+    root.left.nil? ? root.left = value : insert(value, root.left)
+    root.right.nil? ? root.right = value : insert(value, root.right)
   
   end
 
@@ -45,5 +46,5 @@ end
 array = [1, 2, 3, 4, 5, 6, 7]
 new = BinaryTree.new(array)
 
-
+new.insert(0)
 new.pretty_print
