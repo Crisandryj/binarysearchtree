@@ -15,7 +15,7 @@ class BinaryTree
   end
 
   def build_tree(array)
-    return nil if array.empty? 
+    return nil if array.empty?
 
     mid = (array.length - 1)/2
     root_node = Node.new(array[mid])
@@ -26,7 +26,12 @@ class BinaryTree
     root_node
   end
 
-  def insert; end
+  def insert
+    
+
+  
+  
+  end
 
   def delete
     # delete leaf in the tree - previous node no longer points to it
@@ -40,4 +45,5 @@ end
 array = [1, 2, 3, 4, 5, 6, 7]
 new = BinaryTree.new(array)
 
-p new.pretty_print
+
+new.pretty_print
