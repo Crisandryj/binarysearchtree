@@ -27,10 +27,7 @@ class BinaryTree
   end
 
   def insert(value, root = nil)
-    root = value if root.nil?
-
-    root.left.nil? ? root.left = value : insert(value, root.left)
-    root.right.nil? ? root.right = value : insert(value, root.right)
+    
   
   end
 
