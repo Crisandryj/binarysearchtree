@@ -27,7 +27,13 @@ class BinaryTree
   end
 
   def insert(value, root = nil)
-    
+    return
+
+    if value < root
+      root.left.nil? ? Node.new(value) : insert(value, root.left)
+    else
+      root.right.nil? ? Node.new(value) : insert(value, root.right)
+    end
   
   end
 
