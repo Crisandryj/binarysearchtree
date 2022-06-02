@@ -38,16 +38,18 @@ class BinaryTree
   end
 
   def delete(value, node = root)
+    # case 1 node.right.nil? node.right.data = nil : delete(value, node.right)
     # delete leaf in the tree - previous node no longer points to it
-    return nil if value == node.data  
 
+    return value if node == nil
+  
     if value < node.data
-      node.left.nil? ? node.left = Node.new(value) : insert(value, node.left)
+      node.left == value ? node.left = nil : delete(value, node.left)
     else
-      node.right.nil? ? node.right = Node.new(value) : insert(value, node.right)
+      node.right == value ? node.right = nil : delete(value, node.right)
     end
 
-    # case 1 node.right.nil? node.right.data = nil : delete(value, node.right)
+    
     # case 2
     # one child node - replace it with its child (previous node points to the child)
     # node with 2 childs - next biggest - find the left most node (becomes new key) (recursively remove)
@@ -58,4 +60,5 @@ array = [1, 2, 3, 4, 5, 6, 7]
 new = BinaryTree.new(array)
 
 new.insert(0)
+p new.delete(7)
 new.pretty_print
