@@ -26,20 +26,28 @@ class BinaryTree
     root_node
   end
 
-  def insert(value, root = nil)
-    return
+  def insert(value, node = root)
+    return nil if value == node.data  
 
-    if value < root
-      root.left.nil? ? Node.new(value) : insert(value, root.left)
+    if value < node.data
+      node.left.nil? ? node.left = Node.new(value) : insert(value, node.left)
     else
-      root.right.nil? ? Node.new(value) : insert(value, root.right)
+      node.right.nil? ? node.right = Node.new(value) : insert(value, node.right)
     end
   
   end
 
-  def delete
+  def delete(value, node = root)
     # delete leaf in the tree - previous node no longer points to it
-    # case 1      node.right.nil? node.right.data = nil : delete(value, node.right)
+    return nil if value == node.data  
+
+    if value < node.data
+      node.left.nil? ? node.left = Node.new(value) : insert(value, node.left)
+    else
+      node.right.nil? ? node.right = Node.new(value) : insert(value, node.right)
+    end
+
+    # case 1 node.right.nil? node.right.data = nil : delete(value, node.right)
     # case 2
     # one child node - replace it with its child (previous node points to the child)
     # node with 2 childs - next biggest - find the left most node (becomes new key) (recursively remove)
