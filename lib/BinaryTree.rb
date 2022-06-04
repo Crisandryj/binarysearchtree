@@ -42,9 +42,9 @@ class BinaryTree
     # delete leaf in the tree - previous node no longer points to i
   
     if value < node.data
-    #   node.left.data == value ? node.left = nil : delete(value, node.left)
-    # elsif 
-    #   node.right.data == value ? node.right = nil : delete(value, node.right)
+      node.left.data == value ? node.left = nil : delete(value, node.left)
+    elsif 
+      node.right.data == value ? node.right = nil : delete(value, node.right)
 
     # case 2
     # one child node - replace it with its child (previous node points to the child)
@@ -54,7 +54,6 @@ class BinaryTree
       node.left.nil?
       node.data == value ? node.data = node.right.data : delete(value, node.right)
     end
-
 
     # node with 2 childs - next biggest - find the left most node (becomes new key) (recursively remove)
   end
