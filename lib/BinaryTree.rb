@@ -43,23 +43,15 @@ class BinaryTree
   
     if value < node.data
       node.left.data == value ? node.left = nil : delete(value, node.left)
-    else
+    elsif 
       node.right.data == value ? node.right = nil : delete(value, node.right)
-    end
-
-    
     # case 2
     # one child node - replace it with its child (previous node points to the child)
-    if value < node.data
-      if node.right.nil?
-      node.left.data == value ? node = node.left.data : delete(value, node.left)
-      end
-    else
-      if node.left.nil?
-      node.right.data == value ? node = node.right.data : delete(value, node.right)
-      end
-    end
-    if node.left.nil? || node.right.nil?
+    elsif node.right.nil?
+      node.data == value ? node.data = node.left.data : delete(value, node.left)
+    else 
+      node.left.nil?
+      node.data == value ? node.data = node.right.data : delete(value, node.right)
     end
 
 
