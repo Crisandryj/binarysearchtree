@@ -55,7 +55,6 @@ class BinaryTree
     # node with 2 childs - next biggest - find the left most node (becomes new key) (recursively remove)
   end
 
-
   def left_most(node = root)
 
   end 
